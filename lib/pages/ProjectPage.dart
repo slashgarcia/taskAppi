@@ -4,6 +4,7 @@ import 'package:task_app/config/Responsive.dart';
 import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/provider/GlobalProvider.dart';
 import 'package:task_app/provider/ProjectProvider.dart';
+import 'package:task_app/widgets/TaskCard.dart';
 
 import 'ChatPage.dart';
 
@@ -35,32 +36,41 @@ class BuildProject extends StatelessWidget {
     Responsive _responsive = Responsive(context);
     var theme = Theme.of(context);
     return Scaffold(
-      body: Center(
-          child: RaisedButton(
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => ChatPage(
-                  projectModel: projectProvider.project,
-                ),
-              ));
-        },
-        child: Text("Chat"),
-      )),
+      appBar: AppBar(
+        title: Text(projectProvider.project.name),
+      ),
+      body: Column(children: [
+        Text(""),
+        Text(""),
+        StreamBuilder(
+            stream: projectProvider.tasks,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData || snapshot.data == null) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => TaskCard(
+                        project: projectProvider.project,
+                        task: snapshot.data[index],
+                      ));
+            }),
+        RaisedButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ChatPage(
+                    projectModel: projectProvider.project,
+                  ),
+                ));
+          },
+          child: Text("Chat"),
+        )
+      ]),
     );
   }
 }
-
-// RaisedButton(
-//         onPressed: () {
-//           Navigator.push(
-//               context,
-//               MaterialPageRoute(
-//                 builder: (_) => ChatPage(
-//                   projectModel: projectProvider.project,
-//                 ),
-//               ));
-//         },
-//         child: Text("Chat"),
-//       )

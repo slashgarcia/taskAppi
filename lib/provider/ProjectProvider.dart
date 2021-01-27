@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/models/TaskModel.dart';
 import 'package:http/http.dart' as http;
@@ -14,14 +15,9 @@ class ProjectProvider extends ChangeNotifier {
   String token;
   Project project;
   ProjectModel projectModel;
-  List<Task> _tasks = [];
+  // List<Task> _tasks = [];
 
-  List<Task> get tasks => _tasks;
-
-  addTask(Task task) {
-    _tasks.add(task);
-    notifyListeners();
-  }
+  BehaviorSubject<List<Task>> tasks = new BehaviorSubject<List<Task>>();
 
   ProjectProvider({@required Project project, @required String token}) {
     this.project = project;
@@ -32,11 +28,7 @@ class ProjectProvider extends ChangeNotifier {
     Uri uri = new Uri(
       scheme: "https",
       host: "api-task-ing.herokuapp.com",
-      pathSegments: [
-        "api",
-        "project",
-        "${project.id}",
-      ],
+      pathSegments: ["api", "project", "${project.id}"],
     );
     final Response request = await http.get(
       uri,
@@ -44,7 +36,13 @@ class ProjectProvider extends ChangeNotifier {
     );
     if (request.statusCode == 200) {
       final data = jsonDecode(request.body);
-      // projectModel = ProjectModel.fromJson(data);
+      projectModel = ProjectModel.fromJson(data);
+      project = projectModel.project;
+      tasks.sink.add(projectModel.task);
     }
+  }
+
+  close() {
+    tasks.close();
   }
 }
