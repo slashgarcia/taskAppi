@@ -4,6 +4,7 @@ import 'package:task_app/config/Responsive.dart';
 import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/provider/GlobalProvider.dart';
 import 'package:task_app/provider/ProjectProvider.dart';
+import 'package:task_app/widgets/TaskCard.dart';
 
 class ProjectPage extends StatelessWidget {
   final Project projectModel;
@@ -34,7 +35,21 @@ class BuildProject extends StatelessWidget {
     Responsive _responsive = Responsive(context);
     var theme = Theme.of(context);
     return Scaffold(
-      body: Center(child: Text("${projectProvider.project.name}")),
+      body: Column(children: [
+        Text(""),
+        Text(""),
+        projectProvider.tasks == null
+            ? Text("Crea una tarea")
+            : ListView.builder(
+                itemCount: projectProvider.tasks == null
+                    ? 0
+                    : projectProvider.tasks.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) => TaskCard(
+                      project: projectProvider.project,
+                      task: projectProvider.tasks[index],
+                    ))
+      ]),
     );
   }
 }

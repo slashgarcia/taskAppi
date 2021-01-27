@@ -44,6 +44,8 @@ class ProjectProvider extends ChangeNotifier {
     if (request.statusCode == 200) {
       final data = jsonDecode(request.body);
       projectModel = ProjectModel.fromJson(data);
+      project = projectModel.project;
+      _tasks = projectModel.task;
     }
   }
 }
