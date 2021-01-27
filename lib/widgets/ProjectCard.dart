@@ -1,64 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:task_app/config/Responsive.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:task_app/models/ProjectModel.dart';
+import 'package:task_app/provider/GlobalProvider.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({
-    Key key,
-    @required this.function,
-    @required Responsive responsive,
-    @required this.title,
-    @required this.theme,
-    @required this.description,
-  })  : _responsive = responsive,
-        super(key: key);
+  final Project project;
 
-  final Function function;
-  final Responsive _responsive;
-  final String title;
-  final ThemeData theme;
-  final String description;
+  const ProjectCard({Key key, this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: function,
-      child: new Card(
+    final theme = Theme.of(context);
+    var globalProvider = Provider.of<GlobalProvider>(context);
+
+    return Card(
         elevation: 5.0,
         margin: EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            SizedBox(
-              height: _responsive.height * .02,
+        child: ListTile(
+          onTap: () {
+            //TODO Push como parametro
+          },
+          title: Text(project.name, style: theme.textTheme.headline5),
+          subtitle: Text(
+            project.description,
+            style: theme.textTheme.bodyText2,
+            textAlign: TextAlign.left,
+          ),
+          trailing: IconButton(
+            icon: Icon(
+              FontAwesomeIcons.trash,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: _responsive.width * .03,
-                ),
-                Text(title, style: theme.textTheme.headline5),
-              ],
-            ),
-            SizedBox(
-              height: _responsive.height * .01,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: _responsive.width * .03,
-                ),
-                Text(
-                  description,
-                  style: theme.textTheme.bodyText2,
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: _responsive.height * .02,
-            ),
-          ],
-        ),
-      ),
-    );
+            onPressed: () => globalProvider.removeProject(project.id),
+          ),
+        ));
   }
 }

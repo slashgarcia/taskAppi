@@ -33,15 +33,12 @@ class DataModel {
 }
 
 class UserModel {
-  UserModel({
-    this.username,
-    this.email,
-    this.id,
-  });
+  UserModel({this.username, this.email, this.id, this.password});
 
   String username;
   String email;
   int id;
+  String password;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         username: json["username"],

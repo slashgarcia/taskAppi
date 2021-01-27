@@ -34,6 +34,7 @@ class LoginProvider extends ChangeNotifier {
     if (request.statusCode == 200) {
       final data = jsonDecode(request.body);
       user = DataModel.fromJson(data['data']);
+      user.user.password = password.value;
       return user;
     }
 
