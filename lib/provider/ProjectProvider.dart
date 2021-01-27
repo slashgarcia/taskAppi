@@ -13,6 +13,7 @@ class ProjectProvider extends ChangeNotifier {
   String description;
   String token;
   Project project;
+  ProjectModel projectModel;
   List<Task> _tasks = [];
 
   List<Task> get tasks => _tasks;
@@ -27,7 +28,7 @@ class ProjectProvider extends ChangeNotifier {
     this.token = token;
   }
 
-  Future<Project> getInfo() async {
+  Future getInfo() async {
     Uri uri = new Uri(
       scheme: "https",
       host: "api-task-ing.herokuapp.com",
@@ -39,9 +40,7 @@ class ProjectProvider extends ChangeNotifier {
     );
     if (request.statusCode == 200) {
       final data = jsonDecode(request.body);
-      project = Project.fromJson(data['project']);
-      return project;
+      projectModel = ProjectModel.fromJson(data);
     }
-    return null;
   }
 }
