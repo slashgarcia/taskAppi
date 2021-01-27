@@ -40,31 +40,6 @@ class BuildProject extends StatelessWidget {
         title: Text(projectProvider.project.name),
       ),
       body: Column(children: [
-<<<<<<< HEAD
-        SizedBox(
-          height: _responsive.height * .05,
-        ),
-        Text(projectProvider.project.name, style: theme.textTheme.headline4),
-        SizedBox(
-          height: _responsive.height * .02,
-        ),
-        Text(projectProvider.project.description,
-            style: theme.textTheme.subtitle1),
-        SizedBox(
-          height: _responsive.height * .03,
-        ),
-        projectProvider.tasks == null
-            ? Text("Crea una tarea", style: theme.textTheme.headline1)
-            : ListView.builder(
-                itemCount: projectProvider.tasks == null
-                    ? 0
-                    : projectProvider.tasks.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) => TaskCard(
-                      project: projectProvider.project,
-                      task: projectProvider.tasks[index],
-                    ))
-=======
         Text(""),
         Text(""),
         StreamBuilder(
@@ -95,7 +70,6 @@ class BuildProject extends StatelessWidget {
           },
           child: Text("Chat"),
         )
->>>>>>> 0c4a217ac9f1da94c0014bb3a63398a79c858466
       ]),
     );
   }

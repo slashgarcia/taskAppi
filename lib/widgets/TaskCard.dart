@@ -28,7 +28,8 @@ class TaskCard extends StatelessWidget {
             textAlign: TextAlign.left,
           ),
           trailing: IconButton(
-            icon: Icon(FontAwesomeIcons.check),
+            icon: Icon(FontAwesomeIcons.check,
+                color: task.done ? Colors.green : Colors.grey),
             onPressed: () => globalProvider.changeToDone(task.id),
           ),
         ));
