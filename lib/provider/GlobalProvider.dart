@@ -49,7 +49,7 @@ class GlobalProvider extends ChangeNotifier {
       host: "api-task-ing.herokuapp.com",
       pathSegments: ["api", "project", "remove", "$projectId"],
     );
-    final Response request = await http.post(
+    final Response request = await http.delete(
       uri,
       headers: {
         'Authorization': 'Bearer ${_data.token.token}',
