@@ -6,12 +6,12 @@ class GlobalProvider extends ChangeNotifier {
   String _token;
 
   String get token => _token;
-  UserModel _user;
+  DataModel _data;
 
-  UserModel get user => _user;
+  DataModel get data => _data;
 
-  set user(UserModel value) {
-    _user = value;
+  set data(DataModel value) {
+    _data = value;
     notifyListeners();
   }
 

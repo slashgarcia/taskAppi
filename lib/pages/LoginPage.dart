@@ -86,10 +86,10 @@ class BuildLogin extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0)),
                       onPressed: () async {
                         if (loginProvider.formKey.currentState.validate()) {
-                          final UserModel userModel =
+                          final DataModel userModel =
                               await loginProvider.login();
                           if (userModel != null) {
-                            globalProvider.user = userModel;
+                            globalProvider.data = userModel;
                             Navigator.of(context).pushNamed("home");
                           } else {
                             Navigator.of(context).pushNamed("error");

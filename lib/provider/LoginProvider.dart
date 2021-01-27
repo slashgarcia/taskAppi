@@ -15,13 +15,13 @@ class LoginProvider extends ChangeNotifier {
 
   bool _showPassword = true;
   bool get showPassword => _showPassword;
-  UserModel user;
+  DataModel user;
   set showPassword(bool value) {
     _showPassword = value;
     notifyListeners();
   }
 
-  Future<UserModel> login() async {
+  Future<DataModel> login() async {
     Uri uri = new Uri(
       scheme: "https",
       host: "api-task-ing.herokuapp.com",
@@ -33,7 +33,7 @@ class LoginProvider extends ChangeNotifier {
     });
     if (request.statusCode == 200) {
       final data = jsonDecode(request.body);
-      user = UserModel.fromJson(data['data']['user']);
+      user = DataModel.fromJson(data['data']);
       return user;
     }
 

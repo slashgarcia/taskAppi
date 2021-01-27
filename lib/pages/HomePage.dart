@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Text(globalProvider.user.id.toString()),
+        child: Text(globalProvider.data.projects.toString()),
       ),
     );
   }
