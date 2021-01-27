@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_app/config/Responsive.dart';
 import 'package:task_app/models/ProjectModel.dart';
+import 'package:task_app/pages/TaskPage.dart';
 import 'package:task_app/provider/GlobalProvider.dart';
 import 'package:task_app/provider/ProjectProvider.dart';
 import 'package:task_app/widgets/TaskCard.dart';
@@ -59,6 +60,19 @@ class BuildProject extends StatelessWidget {
                       ));
             }),
         RaisedButton(
+          onPressed: () async {
+            bool value = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => TaskPage(
+                    project: projectProvider.project,
+                  ),
+                ));
+            projectProvider.getInfo();
+          },
+          child: Text("Crear tarea"),
+        ),
+        RaisedButton(
           onPressed: () {
             Navigator.push(
                 context,
@@ -69,7 +83,7 @@ class BuildProject extends StatelessWidget {
                 ));
           },
           child: Text("Chat"),
-        )
+        ),
       ]),
     );
   }

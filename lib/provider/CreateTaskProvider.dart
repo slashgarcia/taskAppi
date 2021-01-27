@@ -11,6 +11,7 @@ class CreateTaskProvider extends ChangeNotifier {
   Project project;
   CreateTaskProvider(Token token, Project project) {
     this.token = token;
+    this.project = project;
   }
 
   BehaviorSubject<String> name = BehaviorSubject();
