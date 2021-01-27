@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_app/config/Responsive.dart';
+import 'package:task_app/models/DataModel.dart';
 import 'package:task_app/provider/LoginProvider.dart';
 import 'package:task_app/widgets/InputText.dart';
-
-import '../models/UserModel.dart';
 import '../provider/GlobalProvider.dart';
 
 class LoginPage extends StatelessWidget {

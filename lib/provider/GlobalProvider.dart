@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/UserModel.dart';
+import '../models/DataModel.dart';
 
 class GlobalProvider extends ChangeNotifier {
   String _token;
@@ -55,6 +55,27 @@ class GlobalProvider extends ChangeNotifier {
         'Authorization': 'Bearer ${_data.token.token}',
       },
     );
+    if (request.statusCode == 200) {
+      await updateData();
+      return true;
+    }
+    return false;
+  }
+
+  Future<bool> createProject(String name, String description) async {
+    Uri uri = new Uri(
+      scheme: "https",
+      host: "api-task-ing.herokuapp.com",
+      pathSegments: ["api", "project"],
+    );
+
+    final http.Response request = await http.post(uri, headers: {
+      'Authorization': 'Bearer ${_data.token.token}'
+    }, body: {
+      "name": "$name",
+      "description": "$description",
+    });
+
     if (request.statusCode == 200) {
       await updateData();
       return true;

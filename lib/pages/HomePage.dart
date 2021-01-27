@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:provider/provider.dart';
 import 'package:task_app/config/Responsive.dart';
 import 'package:task_app/widgets/CustomBottomSheet.dart';
@@ -18,6 +19,18 @@ class HomePage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed("create");
+          },
+          child: Icon(
+            FontAwesomeIcons.plus,
+            color: Colors.white,
+          ),
+          tooltip: "Crear proyecto",
+          backgroundColor: theme.primaryColor,
+          splashColor: theme.accentColor,
+        ),
         appBar: AppBar(
           title: Column(
             children: [
@@ -33,14 +46,8 @@ class HomePage extends StatelessWidget {
           backgroundColor: theme.scaffoldBackgroundColor,
           automaticallyImplyLeading: false,
         ),
-        bottomSheet: CustomBottomSheet(
-          responsive: _responsive,
-          theme: theme,
-          icon: FontAwesomeIcons.plus,
-          function: () {},
-        ),
         body: Container(
-          height: _responsive.height * .74,
+          height: _responsive.height * .83,
           padding: EdgeInsets.only(top: _responsive.height * .025),
           child: new ListView.builder(
             shrinkWrap: true,

@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/UserModel.dart';
+import '../models/DataModel.dart';
 
 class LoginProvider extends ChangeNotifier {
   var username = BehaviorSubject<String>();
