@@ -17,21 +17,26 @@ class TaskCard extends StatelessWidget {
     var globalProvider = Provider.of<GlobalProvider>(context);
 
     return Card(
-        elevation: 5.0,
-        margin: EdgeInsets.all(20.0),
-        child: ListTile(
-          onTap: () {},
-          title: Text(task.title, style: theme.textTheme.headline5),
-          subtitle: Text(
-            task.description,
-            style: theme.textTheme.bodyText2,
-            textAlign: TextAlign.left,
-          ),
-          trailing: IconButton(
-            icon: Icon(FontAwesomeIcons.check,
-                color: task.done ? Colors.green : Colors.grey),
-            onPressed: () => globalProvider.changeToDone(task.id),
-          ),
-        ));
+      elevation: 5.0,
+      margin: EdgeInsets.all(20.0),
+      child: ListTile(
+        onTap: () {},
+        title: Text(task.title, style: theme.textTheme.headline5),
+        subtitle: Text(
+          task.description,
+          style: theme.textTheme.bodyText2,
+          textAlign: TextAlign.left,
+        ),
+        trailing: Row(
+          children: [
+            IconButton(
+              icon: Icon(FontAwesomeIcons.check,
+                  color: task.done ? Colors.green : Colors.grey),
+              onPressed: () => globalProvider.changeToDone(task.id),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

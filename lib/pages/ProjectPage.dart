@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_app/config/Responsive.dart';
 import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/pages/TaskPage.dart';
 import 'package:task_app/provider/GlobalProvider.dart';
@@ -32,14 +33,19 @@ class BuildProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var projectProvider = Provider.of<ProjectProvider>(context);
+    Responsive _responsive = Responsive(context);
+    var theme = Theme.of(context);
     projectProvider.getInfo();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(projectProvider.project.name),
-      ),
       body: Column(children: [
-        Text(""),
-        Text(""),
+        SizedBox(
+          height: _responsive.height * .04,
+        ),
+        Text(
+          projectProvider.project.name,
+          style: theme.textTheme.headline5,
+        ),
+        Text(projectProvider.project.description),
         StreamBuilder(
             stream: projectProvider.tasks,
             builder: (context, snapshot) {
