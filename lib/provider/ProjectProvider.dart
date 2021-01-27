@@ -22,8 +22,8 @@ class ProjectProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  ProjectProvider({@required int id, @required String token}) {
-    this.id = id;
+  ProjectProvider({@required Project id, @required String token}) {
+    this.project = project;
     this.token = token;
   }
 
