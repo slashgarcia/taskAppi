@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:task_app/config/Responsive.dart';
 import 'package:task_app/provider/LoginProvider.dart';
 import 'package:task_app/widgets/InputText.dart';
-import 'package:http/http.dart' as http;
+
+import '../models/UserModel.dart';
+import '../provider/GlobalProvider.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -24,6 +26,7 @@ class BuildLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     Responsive _responsive = Responsive(context);
     var loginProvider = Provider.of<LoginProvider>(context);
+    var globalProvider = Provider.of<GlobalProvider>(context);
     var theme = Theme.of(context);
     return SafeArea(
       child: Scaffold(
@@ -83,19 +86,11 @@ class BuildLogin extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0)),
                       onPressed: () async {
                         if (loginProvider.formKey.currentState.validate()) {
-                          Uri uri = new Uri(
-                            scheme: "https",
-                            host: "api-task-ing.herokuapp.com",
-                            pathSegments: ["api", "user", "login"],
-                          );
-                          final request = await http.post(uri, body: {
-                            "username": "${loginProvider.username.value}",
-                            "password": "${loginProvider.password.value}"
-                          });
-
-                          print(request.statusCode);
-                          if (request.statusCode == 200) {
-                            Navigator.of(context).pushNamed("");
+                          final UserModel userModel =
+                              await loginProvider.login();
+                          if (userModel != null) {
+                            globalProvider.user = userModel;
+                            Navigator.of(context).pushNamed("home");
                           } else {
                             Navigator.of(context).pushNamed("error");
                           }

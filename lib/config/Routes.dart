@@ -5,6 +5,8 @@ import 'package:task_app/pages/LoginPage.dart';
 import 'package:task_app/pages/OkPage.dart';
 import 'package:task_app/pages/SignUpPage.dart';
 
+import '../pages/HomePage.dart';
+
 Route Function(RouteSettings) get routes => (RouteSettings settings) {
       Route route;
 
@@ -17,6 +19,11 @@ Route Function(RouteSettings) get routes => (RouteSettings settings) {
         case "login":
           route = MaterialPageRoute(
               builder: (_) => LoginPage(),
+              settings: RouteSettings(name: settings.name));
+          break;
+        case "home":
+          route = MaterialPageRoute(
+              builder: (_) => HomePage(),
               settings: RouteSettings(name: settings.name));
           break;
         case "signUp":

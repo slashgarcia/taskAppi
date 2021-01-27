@@ -1,5 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/UserModel.dart';
 
 class LoginProvider extends ChangeNotifier {
   var username = BehaviorSubject<String>();
@@ -9,13 +15,30 @@ class LoginProvider extends ChangeNotifier {
 
   bool _showPassword = true;
   bool get showPassword => _showPassword;
-
+  UserModel user;
   set showPassword(bool value) {
     _showPassword = value;
     notifyListeners();
   }
 
-  login() {}
+  Future<UserModel> login() async {
+    Uri uri = new Uri(
+      scheme: "https",
+      host: "api-task-ing.herokuapp.com",
+      pathSegments: ["api", "user", "login"],
+    );
+    final Response request = await http.post(uri, body: {
+      "username": "${username.value}",
+      "password": "${password.value}"
+    });
+    if (request.statusCode == 200) {
+      final data = jsonDecode(request.body);
+      user = UserModel.fromJson(data['data']['user']);
+      return user;
+    }
+
+    return null;
+  }
 
   String isRequired(String value) {
     if (value.length > 3) {
