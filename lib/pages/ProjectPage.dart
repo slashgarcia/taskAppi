@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task_app/config/Responsive.dart';
 import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/pages/TaskPage.dart';
 import 'package:task_app/provider/GlobalProvider.dart';
@@ -34,8 +33,6 @@ class BuildProject extends StatelessWidget {
   Widget build(BuildContext context) {
     var projectProvider = Provider.of<ProjectProvider>(context);
     projectProvider.getInfo();
-    Responsive _responsive = Responsive(context);
-    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(projectProvider.project.name),
@@ -61,7 +58,7 @@ class BuildProject extends StatelessWidget {
             }),
         RaisedButton(
           onPressed: () async {
-            bool value = await Navigator.push(
+            await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (_) => TaskPage(
