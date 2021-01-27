@@ -27,14 +27,10 @@ class TaskCard extends StatelessWidget {
           style: theme.textTheme.bodyText2,
           textAlign: TextAlign.left,
         ),
-        trailing: Row(
-          children: [
-            IconButton(
-              icon: Icon(FontAwesomeIcons.check,
-                  color: task.done ? Colors.green : Colors.grey),
-              onPressed: () => globalProvider.changeToDone(task.id),
-            ),
-          ],
+        trailing: IconButton(
+          icon: Icon(FontAwesomeIcons.check,
+              color: task.done ? Colors.green : Colors.grey),
+          onPressed: () => globalProvider.changeToDone(task.id),
         ),
       ),
     );
