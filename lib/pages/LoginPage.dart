@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_app/config/Responsive.dart';
+import 'package:task_app/provider/GlobalProvider.dart';
 import 'package:task_app/provider/LoginProvider.dart';
 import 'package:task_app/widgets/InputText.dart';
 import 'package:http/http.dart' as http;
@@ -70,24 +71,9 @@ class BuildLogin extends StatelessWidget {
                   SizedBox(
                     height: _responsive.height * .05,
                   ),
-                  // OptionIconLeft(
-                  //   title: "Ingresar",
-                  //   theme: theme,
-                  //   responsive: _responsive,
-                  //   icon: Icons.arrow_forward,
-                  //   function: () {
-                  //     if (loginProvider.formKey.currentState.validate()) {
-                  //       print("Bien");
-                  //     } else {
-                  //       print("Mal");
-                  //     }
-                  //   },
-                  // )
                   Container(
                     padding:
                         EdgeInsets.only(left: 80.0, right: 80.0, bottom: 60.0),
-                    // width: _responsive.width * .05,
-                    // height: _responsive.height * .15,
                     child: RaisedButton(
                       child: Text(
                         "Iniciar sesión",

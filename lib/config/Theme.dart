@@ -10,6 +10,7 @@ class TaskTheme {
 
   static const primary = Color(0xFF5b55ca);
   static const secondary = Color(0xFFf26850);
+  static const background = Color(0xFFFDF0F4);
 }
 
 ThemeData get principalTheme {
@@ -20,7 +21,7 @@ ThemeData get principalTheme {
     primaryColorDark: TaskTheme.textAccent,
     primaryColorLight: Colors.white,
     backgroundColor: TaskTheme.secondary,
-    scaffoldBackgroundColor: TaskTheme.secondary,
+    scaffoldBackgroundColor: TaskTheme.background,
     dialogTheme: DialogTheme(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),

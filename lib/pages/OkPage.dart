@@ -52,8 +52,8 @@ class OkPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0)),
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushNamedAndRemoveUntil("login", (route) => false);
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          "login", (Route<dynamic> route) => false);
                     },
                   ),
                 ),

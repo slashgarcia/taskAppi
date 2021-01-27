@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:task_app/config/Theme.dart';
+import 'package:task_app/provider/GlobalProvider.dart';
 import 'package:task_app/provider/LoginProvider.dart';
 import 'package:task_app/provider/SignUpProvider.dart';
 import 'config/Routes.dart';
@@ -13,8 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LoginProvider()),
-        ChangeNotifierProvider(create: (_) => SignUpProvider()),
+        ChangeNotifierProvider(
+          create: (_) => GlobalProvider(),
+        )
       ],
       child: MaterialApp(
           title: 'Tasks',
