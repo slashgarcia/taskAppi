@@ -90,6 +90,7 @@ class BuildLogin extends StatelessWidget {
                               await loginProvider.login();
                           if (userModel != null) {
                             globalProvider.data = userModel;
+                            print(globalProvider.data.token.token);
                             Navigator.of(context).pushNamed("home");
                           } else {
                             Navigator.of(context).pushNamed("error");

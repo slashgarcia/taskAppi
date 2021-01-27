@@ -10,7 +10,7 @@ class TaskTheme {
 
   static const primary = Color(0xFF5b55ca);
   static const secondary = Color(0xFFf26850);
-  static const background = Color(0xFFFDF0F4);
+  static const background = Color(0xFFF0F4FD);
 }
 
 ThemeData get principalTheme {
@@ -65,7 +65,7 @@ ThemeData get principalTheme {
         fontWeight: FontWeight.w900,
       ),
       headline5: TextStyle(
-        color: TaskTheme.textColor,
+        color: TaskTheme.secondary,
         fontWeight: FontWeight.w900,
       ),
       headline6: TextStyle(
