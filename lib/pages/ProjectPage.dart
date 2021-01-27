@@ -5,9 +5,10 @@ import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/provider/GlobalProvider.dart';
 import 'package:task_app/provider/ProjectProvider.dart';
 
+import 'ChatPage.dart';
+
 class ProjectPage extends StatelessWidget {
   final Project projectModel;
-
   const ProjectPage({Key key, this.projectModel}) : super(key: key);
 
   @override
@@ -34,7 +35,32 @@ class BuildProject extends StatelessWidget {
     Responsive _responsive = Responsive(context);
     var theme = Theme.of(context);
     return Scaffold(
-      body: Center(child: Text("${projectProvider.project.name}")),
+      body: Center(
+          child: RaisedButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => ChatPage(
+                  projectModel: projectProvider.project,
+                ),
+              ));
+        },
+        child: Text("Chat"),
+      )),
     );
   }
 }
+
+// RaisedButton(
+//         onPressed: () {
+//           Navigator.push(
+//               context,
+//               MaterialPageRoute(
+//                 builder: (_) => ChatPage(
+//                   projectModel: projectProvider.project,
+//                 ),
+//               ));
+//         },
+//         child: Text("Chat"),
+//       )

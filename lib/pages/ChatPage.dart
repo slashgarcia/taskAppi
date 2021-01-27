@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_app/models/MessageModel.dart';
+import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/provider/ChatProvider.dart';
 import 'package:task_app/provider/GlobalProvider.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key key}) : super(key: key);
+  const ChatPage({Key key, this.projectModel}) : super(key: key);
+  final Project projectModel;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +15,8 @@ class ChatPage extends StatelessWidget {
 
     return Scaffold(
         body: ChangeNotifierProvider(
-      create: (context) =>
-          ChatProvider(name: globalProvider.data.user.username, projectId: 1),
+      create: (context) => ChatProvider(
+          name: globalProvider.data.user.username, projectId: projectModel.id),
       builder: (context, child) => ChatBuild(),
     ));
   }

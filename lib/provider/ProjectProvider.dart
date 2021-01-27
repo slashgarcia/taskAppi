@@ -35,6 +35,7 @@ class ProjectProvider extends ChangeNotifier {
       pathSegments: [
         "api",
         "project",
+        "${project.id}",
       ],
     );
     final Response request = await http.get(
@@ -43,7 +44,7 @@ class ProjectProvider extends ChangeNotifier {
     );
     if (request.statusCode == 200) {
       final data = jsonDecode(request.body);
-      projectModel = ProjectModel.fromJson(data);
+      // projectModel = ProjectModel.fromJson(data);
     }
   }
 }
