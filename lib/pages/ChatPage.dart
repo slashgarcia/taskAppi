@@ -14,11 +14,15 @@ class ChatPage extends StatelessWidget {
     var globalProvider = Provider.of<GlobalProvider>(context);
 
     return Scaffold(
+        appBar: AppBar(
+          title: Text("Chat"),
+        ),
         body: ChangeNotifierProvider(
-      create: (context) => ChatProvider(
-          name: globalProvider.data.user.username, projectId: projectModel.id),
-      builder: (context, child) => ChatBuild(),
-    ));
+          create: (context) => ChatProvider(
+              name: globalProvider.data.user.username,
+              projectId: projectModel.id),
+          builder: (context, child) => ChatBuild(),
+        ));
   }
 }
 

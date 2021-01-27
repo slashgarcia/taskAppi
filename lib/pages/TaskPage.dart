@@ -87,14 +87,8 @@ class BuildTaskPage extends StatelessWidget {
                                 provider.description.value,
                               );
                               if (created) {
-                                final snackBar =
-                                    SnackBar(content: Text('Tarea creada'));
-                                Scaffold.of(context).showSnackBar(snackBar);
-                              } else {
-                                final snackBar =
-                                    SnackBar(content: Text('Hubo un error...'));
-                                Scaffold.of(context).showSnackBar(snackBar);
-                              }
+                                Navigator.pop(context);
+                              } else {}
                               globalProvider.updateData();
                             }
                           },
