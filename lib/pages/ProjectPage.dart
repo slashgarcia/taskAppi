@@ -48,6 +48,9 @@ class BuildProject extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               }
+              if (snapshot.data.length < 1) {
+                return Center(child: Text("Este proyecto no tiene tareas"));
+              }
               return ListView.builder(
                   itemCount: snapshot.data.length,
                   shrinkWrap: true,
