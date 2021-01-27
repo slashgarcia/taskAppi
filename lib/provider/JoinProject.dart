@@ -30,10 +30,25 @@ class JoinProvider extends ChangeNotifier {
       headers: {'Authorization': 'Bearer ${token.token}'},
     );
     if (request.statusCode == 200) {
-      var projectsData = jsonDecode(request.body)['projects']
-          .map((project) => ProjectModel.fromJson(project))
-          .toList();
+      var projectsData = List<Project>.from(
+          jsonDecode(request.body)["projects"].map((x) => Project.fromJson(x)));
       projects.sink.add(projectsData);
+    }
+  }
+
+  joinToProject(String projectId) async {
+    Uri uri = new Uri(
+      scheme: "https",
+      host: "api-task-ing.herokuapp.com",
+      pathSegments: ["api", "project", "add"],
+    );
+    final Response request = await http.post(uri,
+        headers: {'Authorization': 'Bearer ${token.token}'},
+        body: {"project_id": projectId});
+    if (request.statusCode == 200) {
+      return true;
+    } else {
+      return false;
     }
   }
 
