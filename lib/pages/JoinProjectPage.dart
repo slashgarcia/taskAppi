@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/pages/ProjectPage.dart';
 import 'package:task_app/provider/GlobalProvider.dart';
-import 'package:task_app/provider/JoinProject.dart';
+import 'package:task_app/provider/JoinProjectProvider.dart';
 
 class JoinProjectPage extends StatelessWidget {
   const JoinProjectPage({Key key}) : super(key: key);
