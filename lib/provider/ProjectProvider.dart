@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:task_app/models/ProjectModel.dart';
 import 'package:task_app/models/TaskModel.dart';
 import 'package:http/http.dart' as http;
@@ -14,14 +15,9 @@ class ProjectProvider extends ChangeNotifier {
   String token;
   Project project;
   ProjectModel projectModel;
-  List<Task> _tasks = [];
+  // List<Task> _tasks = [];
 
-  List<Task> get tasks => _tasks;
-
-  addTask(Task task) {
-    _tasks.add(task);
-    notifyListeners();
-  }
+  BehaviorSubject<List<Task>> tasks = new BehaviorSubject<List<Task>>();
 
   ProjectProvider({@required Project project, @required String token}) {
     this.project = project;
@@ -42,7 +38,11 @@ class ProjectProvider extends ChangeNotifier {
       final data = jsonDecode(request.body);
       projectModel = ProjectModel.fromJson(data);
       project = projectModel.project;
-      _tasks = projectModel.task;
+      tasks.sink.add(projectModel.task);
     }
+  }
+
+  close() {
+    tasks.close();
   }
 }
