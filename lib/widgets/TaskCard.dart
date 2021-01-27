@@ -29,7 +29,7 @@ class TaskCard extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: Icon(FontAwesomeIcons.check),
-            onPressed: () => globalProvider.removeProject(project.id),
+            onPressed: () => globalProvider.changeToDone(task.id),
           ),
         ));
   }

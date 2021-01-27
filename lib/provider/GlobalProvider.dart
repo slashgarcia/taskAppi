@@ -62,6 +62,24 @@ class GlobalProvider extends ChangeNotifier {
     return false;
   }
 
+  Future<bool> changeToDone(int taskId) async {
+    Uri uri = new Uri(
+      scheme: "https",
+      host: "api-task-ing.herokuapp.com",
+      pathSegments: ["api", "task", "done"],
+    );
+    final Response request = await http.post(uri, headers: {
+      'Authorization': 'Bearer ${_data.token.token}',
+    }, body: {
+      "id": "$taskId"
+    });
+    if (request.statusCode == 200) {
+      await updateData();
+      return true;
+    }
+    return false;
+  }
+
   Future<bool> createProject(String name, String description) async {
     Uri uri = new Uri(
       scheme: "https",
