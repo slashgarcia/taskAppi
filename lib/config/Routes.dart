@@ -3,6 +3,7 @@ import 'package:task_app/pages/ChatPage.dart';
 import 'package:task_app/pages/CreateProject.dart';
 import 'package:task_app/pages/ErrorPage.dart';
 import 'package:task_app/pages/InitialPage.dart';
+import 'package:task_app/pages/JoinProjectPage.dart';
 import 'package:task_app/pages/LoginPage.dart';
 import 'package:task_app/pages/OkPage.dart';
 import 'package:task_app/pages/SignUpPage.dart';
@@ -51,6 +52,11 @@ Route Function(RouteSettings) get routes => (RouteSettings settings) {
         case "create":
           route = MaterialPageRoute(
               builder: (_) => CreateProjectPage(),
+              settings: RouteSettings(name: settings.name));
+          break;
+        case "join":
+          route = MaterialPageRoute(
+              builder: (_) => JoinProjectPage(),
               settings: RouteSettings(name: settings.name));
           break;
 
