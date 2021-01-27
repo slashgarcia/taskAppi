@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
             ),
             RaisedButton(
               onPressed: () => Navigator.pushNamed(context, "join"),
-              child: Text("Unete a un proyecto"),
+              child: Text("Únete a un proyecto"),
             )
           ],
         ),

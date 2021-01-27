@@ -36,8 +36,18 @@ class BuildProject extends StatelessWidget {
     var theme = Theme.of(context);
     return Scaffold(
       body: Column(children: [
-        Text(""),
-        Text(""),
+        SizedBox(
+          height: _responsive.height * .05,
+        ),
+        Text(projectProvider.project.name, style: theme.textTheme.headline4),
+        SizedBox(
+          height: _responsive.height * .02,
+        ),
+        Text(projectProvider.project.description,
+            style: theme.textTheme.subtitle1),
+        SizedBox(
+          height: _responsive.height * .03,
+        ),
         projectProvider.tasks == null
             ? Text("Crea una tarea", style: theme.textTheme.headline1)
             : ListView.builder(
