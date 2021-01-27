@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
     var theme = Theme.of(context);
     Responsive _responsive = Responsive(context);
 
+<<<<<<< HEAD
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -58,6 +59,13 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
+=======
+    return Scaffold(
+      body: Center(
+        child: FlatButton(
+          child: Text("Chat"),
+          onPressed: () => Navigator.pushNamed(context, "chat"),
+>>>>>>> a37b5eb5f34501eed453e64bf727d1075a448239
         ),
       ),
     );
