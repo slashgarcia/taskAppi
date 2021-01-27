@@ -17,7 +17,7 @@ class ProjectPage extends StatelessWidget {
     return SafeArea(
       child: ChangeNotifierProvider(
         create: (context) => ProjectProvider(
-            id: projectModel, token: globalProvider.data.token.token),
+            project: projectModel, token: globalProvider.data.token.token),
         builder: (context, child) => BuildProject(),
       ),
     );
