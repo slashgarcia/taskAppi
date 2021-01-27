@@ -39,7 +39,7 @@ class BuildProject extends StatelessWidget {
         Text(""),
         Text(""),
         projectProvider.tasks == null
-            ? Text("Crea una tarea")
+            ? Text("Crea una tarea", style: theme.textTheme.headline1)
             : ListView.builder(
                 itemCount: projectProvider.tasks == null
                     ? 0

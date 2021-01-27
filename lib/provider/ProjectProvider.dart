@@ -32,10 +32,7 @@ class ProjectProvider extends ChangeNotifier {
     Uri uri = new Uri(
       scheme: "https",
       host: "api-task-ing.herokuapp.com",
-      pathSegments: [
-        "api",
-        "project",
-      ],
+      pathSegments: ["api", "project", "${project.id}"],
     );
     final Response request = await http.get(
       uri,
