@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_app/pages/ChatPage.dart';
 import 'package:task_app/pages/ErrorPage.dart';
 import 'package:task_app/pages/InitialPage.dart';
 import 'package:task_app/pages/LoginPage.dart';
@@ -39,6 +40,11 @@ Route Function(RouteSettings) get routes => (RouteSettings settings) {
         case "ok":
           route = MaterialPageRoute(
               builder: (_) => OkPage(),
+              settings: RouteSettings(name: settings.name));
+          break;
+        case "chat":
+          route = MaterialPageRoute(
+              builder: (_) => ChatPage(),
               settings: RouteSettings(name: settings.name));
           break;
 

@@ -12,7 +12,10 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Text(globalProvider.data.projects.toString()),
+        child: FlatButton(
+          child: Text("Chat"),
+          onPressed: () => Navigator.pushNamed(context, "chat"),
+        ),
       ),
     );
   }
