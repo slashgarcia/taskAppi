@@ -46,6 +46,9 @@ class BuildProject extends StatelessWidget {
           style: theme.textTheme.headline5,
         ),
         Text(projectProvider.project.description),
+        SizedBox(
+          height: 45,
+        ),
         StreamBuilder(
             stream: projectProvider.tasks,
             builder: (context, snapshot) {
