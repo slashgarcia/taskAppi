@@ -91,7 +91,7 @@ class BuildLogin extends StatelessWidget {
                             globalProvider.data = userModel;
                             print(globalProvider.data.token.token);
                             Navigator.of(context).pushNamedAndRemoveUntil(
-                                "home", ModalRoute.withName('/'));
+                                "home", (Route<dynamic> route) => false);
                           } else {
                             Navigator.of(context).pushNamed("error");
                           }
