@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_app/config/Responsive.dart';
-import 'package:task_app/models/UserModel.dart';
 import 'package:task_app/provider/SignUpProvider.dart';
 import 'package:task_app/widgets/InputText.dart';
-import 'package:task_app/widgets/OptionIconLeft.dart';
 import 'package:http/http.dart' as http;
 
 class SignUpPage extends StatelessWidget {

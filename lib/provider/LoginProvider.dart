@@ -12,7 +12,7 @@ class LoginProvider extends ChangeNotifier {
 
   set showPassword(bool value) {
     _showPassword = value;
-    notifyListeners;
+    notifyListeners();
   }
 
   login() {}

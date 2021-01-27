@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_app/config/Responsive.dart';
-import 'package:task_app/provider/GlobalProvider.dart';
 import 'package:task_app/provider/LoginProvider.dart';
 import 'package:task_app/widgets/InputText.dart';
 import 'package:http/http.dart' as http;

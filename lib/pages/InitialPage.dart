@@ -1,8 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:task_app/config/Responsive.dart';
-import 'package:task_app/config/Theme.dart';
-import 'package:task_app/widgets/Button.dart';
 import 'package:task_app/widgets/OptionIconLeft.dart';
 
 class InitialPage extends StatelessWidget {
